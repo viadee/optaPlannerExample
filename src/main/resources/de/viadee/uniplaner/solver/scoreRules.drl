@@ -1,0 +1,88 @@
+package de.viadee.uniplaner.solver
+dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder
+import de.viadee.uniplaner.domain.Vorlesung
+import de.viadee.uniplaner.domain.Studiengang
+import de.viadee.uniplaner.domain.Raum
+import de.viadee.uniplaner.domain.Wochentag
+
+global HardSoftScoreHolder scoreHolder
+
+
+// HARD CONSTRAINTS
+
+// Der Constraint "Jeder Vorlesung müssen ein Termin und ein Raum zugeordnet sein." wird implizit
+// durch OptaPlanner sichergestellt, da jeder Planungsvariable ein Wert zugewiesen sein muss. 
+
+// Zwei Vorlesungen dürfen nicht zeitgleich im gleichen Raum stattfinden.
+// Jeder Raumkonflikt zählt als 1 Constraint-Match.
+rule "RaumKonflikt"
+	when
+		$v1	: Vorlesung(termin != null, raum != null)
+		$v2 : Vorlesung(id > $v1.id, termin == $v1.termin, raum == $v1.raum)
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
+
+// Vorlesungen des gleichen Studiengangs dürfen nicht am gleichen Termin stattfinden.
+// Jeder Terminkonflikt zählt als 1 Constraint-Match.
+rule "TerminKonflikt"
+	when
+		$v1	: Vorlesung(termin != null)
+		$v2 : Vorlesung(id > $v1.id, termin == $v1.termin, studiengang == $v1.studiengang)
+	then
+	   scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
+
+
+// SOFT CONSTRAINTS
+
+// Die Vorlesungen eines Studiengangs sollten im gleichen Raum stattfinden.
+// Jeder zusätzliche Raum, der für Vorlesungen eines Studiengangs verwendet wird, zählt als 1 Constraint-Match.
+rule "RaumKontinuitaet"
+	when
+		$studiengang : Studiengang()
+		accumulate (
+			$raum : Raum() and exists Vorlesung(studiengang == $studiengang, raum == $raum);
+			$c : count();
+			$c > 1 
+		)
+	then
+	   scoreHolder.addSoftConstraintMatch(kcontext, -($c.intValue() - 1));
+end
+
+// Die Vorlesungen eines Studiengangs sollten an möglichst wenigen Wochentagen stattfinden.
+// Jeder zusätzliche Tag zählt als 1 Constraint-Match.
+rule "WochenKompaktheit"
+	when
+		$studiengang : Studiengang()
+		accumulate (
+			$tag : Wochentag() and exists Vorlesung(studiengang == $studiengang, tag == $tag);
+			$c : count();
+			$c > 1 
+		)
+	then
+	   scoreHolder.addSoftConstraintMatch(kcontext, -($c.intValue() - 1));
+end
+
+// Die Vorlesungen eines Studiengangs am gleichen Tag sollten aufeinander folgen; es sollte möglichst wenig Freistunden zwischen zwei Vorlesungen geben.
+// Jede "isoliert" stattfindende Vorlesung zählt als 1 Constraint-Match.
+rule "TagKompaktheit"
+	when
+		$vorlesung : Vorlesung($studiengang : studiengang, $tag : tag, $intervallIndex : intervallIndex)
+
+		// Es existiert eine Vorlesung des gleichen Studiengangs am gleichen Tag, die zu einer anderen Zeit stattfindet.
+		exists (
+			Vorlesung(studiengang == $studiengang, tag == $tag, intervallIndex != $intervallIndex)
+		)
+
+		// Es existiert KEINE Vorlesung des gleichen Studiengangs am gleichen Tag, die direkt vor oder nach der aktuellen Vorlesung stattfindet.
+		not (
+			exists (
+				Vorlesung(studiengang == $studiengang, tag == $tag, (intervallIndex == $intervallIndex - 1) || (intervallIndex == $intervallIndex + 1))
+			)
+		)
+	then
+	   scoreHolder.addSoftConstraintMatch(kcontext, -1);
+end
