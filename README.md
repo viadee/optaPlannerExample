@@ -7,18 +7,18 @@ Beispielprojekt für JBoss OptaPlanner: Raum- und Terminplanung an einer Univers
 
 Weitere Informationen zu OptaPlanner finden sich hier:
 
-http://jaxenter.de/artikel/jboss-optaplanner-optimierung-2-0-176855
--> Kurzversion eines Artikels, der ein Vorgehensmodell zur Lösung von Optimierungsproblemen mit OptaPlanner
+http://jaxenter.de/artikel/jboss-optaplanner-optimierung-2-0-176855<br/>
+Kurzversion eines Artikels, der ein Vorgehensmodell zur Lösung von Optimierungsproblemen mit OptaPlanner
 skizziert. Die vollständige Version erscheint in einer der nächsten Print-Ausgaben des Java Magazins.
 
-http://www.optaplanner.org
--> offizielle OptaPlanner-Webseite
+http://www.optaplanner.org<br/>
+offizielle OptaPlanner-Webseite
 
 -----
 
 
 
-- BEISPIELSZENARIO -
+BEISPIELSZENARIO
 
 Das Projekt implementiert beispielhaft die (stark vereinfachte) Raum- und Terminplanung an einer Universität
 auf Basis von JBoss OptaPlanner und JBoss Drools Expert. Ziel ist dabei, dass jeder Vorlesung ein Termin
@@ -33,15 +33,15 @@ Folgende Bedingungen sollten erfüllt werden (Soft Constraints):
 - Die Vorlesungen eines Studiengangs sollten an möglichst wenigen Wochentagen stattfinden.
 - Die Vorlesungen eines Studiengangs sollten pro Tag kompakt sein, sodass es möglichst keine Freistunden gibt.
 
-Diese Bedingungen werden durch Drools-Regeln formuliert (siehe scoreRules.drl).
+Diese Bedingungen werden durch Drools-Regeln formuliert.
 
+<br/><br/>
 
-
-- ENTWICKLUNGSUMGEBUNG -
+ENTWICKLUNGSUMGEBUNG
 
 Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgende Eclipse-Plugin wird benötigt:
 
-- JBoss Drools Core (Update Site: http://download.jboss.org/drools/release/6.1.0.Final/org.drools.updatesite)
+- JBoss Drools Core<br/>(Update Site: http://download.jboss.org/drools/release/6.1.0.Final/org.drools.updatesite)
 
 Nach der Installation des Plugins muss eine Drools Runtime mit dem Namen "Drools 6.1.0.Final" eingerichtet 
 werden. Dies erfolgt unter:
