@@ -17,7 +17,6 @@ offizielle OptaPlanner-Webseite
 -----
 
 <br/>
-
 BEISPIELSZENARIO
 
 Das Projekt implementiert beispielhaft die (stark vereinfachte) Raum- und Terminplanung an einer Universität
@@ -36,7 +35,6 @@ Folgende Bedingungen sollten erfüllt werden (Soft Constraints):
 Diese Bedingungen werden durch Drools-Regeln formuliert.
 
 <br/>
-
 ENTWICKLUNGSUMGEBUNG
 
 Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgende Eclipse-Plugin wird benötigt:
@@ -44,5 +42,5 @@ Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgend
 - JBoss Drools Core<br/>(Update Site: http://download.jboss.org/drools/release/6.1.0.Final/org.drools.updatesite)
 
 Nach der Installation des Plugins muss eine Drools Runtime mit dem Namen "Drools 6.1.0.Final" eingerichtet 
-werden. Dies erfolgt unter:
-Preferences -> Drools -> Installed Drools Runtimes -> Create a new Drools 6 Runtime 
+werden. Dies erfolgt unter:<br/>
+Preferences => Drools => Installed Drools Runtimes => Create a new Drools 6 Runtime 
