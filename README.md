@@ -16,7 +16,7 @@ offizielle OptaPlanner-Webseite
 
 -----
 
-
+<br/>
 
 BEISPIELSZENARIO
 
@@ -35,7 +35,7 @@ Folgende Bedingungen sollten erfüllt werden (Soft Constraints):
 
 Diese Bedingungen werden durch Drools-Regeln formuliert.
 
-<br/><br/>
+<br/>
 
 ENTWICKLUNGSUMGEBUNG
 
