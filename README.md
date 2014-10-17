@@ -2,7 +2,7 @@ optaPlannerExample
 ==================
 
 Beispielprojekt für JBoss OptaPlanner: Raum- und Terminplanung an einer Universität.
-<br/>
+
 -----
 
 Weitere Informationen zu OptaPlanner finden sich hier:
