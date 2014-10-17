@@ -2,7 +2,7 @@ optaPlannerExample
 ==================
 
 Beispielprojekt für JBoss OptaPlanner: Raum- und Terminplanung an einer Universität.
-
+<br/>
 -----
 
 Weitere Informationen zu OptaPlanner finden sich hier:
@@ -16,8 +16,7 @@ offizielle OptaPlanner-Webseite
 
 -----
 
-<br/>
-BEISPIELSZENARIO
+<b>BEISPIELSZENARIO</b>
 
 Das Projekt implementiert beispielhaft die (stark vereinfachte) Raum- und Terminplanung an einer Universität
 auf Basis von JBoss OptaPlanner und JBoss Drools Expert. Ziel ist dabei, dass jeder Vorlesung ein Termin
@@ -34,8 +33,9 @@ Folgende Bedingungen sollten erfüllt werden (Soft Constraints):
 
 Diese Bedingungen werden durch Drools-Regeln formuliert.
 
-<br/>
-ENTWICKLUNGSUMGEBUNG
+-----
+
+<b>ENTWICKLUNGSUMGEBUNG</b>
 
 Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgende Eclipse-Plugin wird benötigt:
 
@@ -43,4 +43,4 @@ Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgend
 
 Nach der Installation des Plugins muss eine Drools Runtime mit dem Namen "Drools 6.1.0.Final" eingerichtet 
 werden. Dies erfolgt unter:<br/>
-Preferences => Drools => Installed Drools Runtimes => Create a new Drools 6 Runtime 
+Preferences > Drools > Installed Drools Runtimes > Create a new Drools 6 Runtime
