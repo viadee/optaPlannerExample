@@ -1,0 +1,63 @@
+STUDIENGANG_ID,NAME
+1,Einführung in die Wirtschaftsinformatik
+1,Programmierung
+1,Mathe für WiWis
+1,Grundlagen der BWL
+1,Datenmanagement
+1,Datenstrukturen und Algorithmen
+1,Operations Research
+1,Grundlagen des Rechnungswesens
+1,Prozessmanagement und Anwendungssysteme
+1,Software Engineering
+1,Daten und Wahrscheinlichkeiten
+1,Operations Management
+1,VWL
+1,Kommunikations- und Kollaborationssysteme
+1,Projektmanagement
+1,Rechnerstrukturen und Betriebssysteme
+1,Datenanalyse und Simulation
+1,Electronic Business
+1,Marketing
+1,IT-Recht
+2,Managing the Information Age Organization
+2,Information Management Tasks and Techniques
+2,Information Management Theories
+2,Information Modeling
+2,Workflow Management
+2,Enterprise Architecture Management
+2,Interorganizational Systems
+2,Information Security
+2,Network Economics
+2,Management Information Systems and Data Warehousing
+2,Data Analytics I,
+2,Data Analytics II,
+2,Logic Specification and Logic Programming
+2,Data Integration
+2,Advanced Concepts in Software Engineering
+2,Supply Chain Management and Logistics
+2,Production Planning and Control
+2,Retail
+3,Einführung in die VWL
+3,Mathematik und IT
+3,Statistik I
+3,Mikroökonomie
+3,Statistik II
+3,Recht
+3,Controlling
+3,Grundlagen des Marketing,
+3,Makroökonomie
+3,Wirtschaftsenglisch
+3,Bilanzen und Steuern
+3,Betriebliche Finanzwirtschaft
+3,Planung und Entscheidungsrechnung
+3,Quantitatives Marketing
+3,Management und Governance
+4,Informatik I
+4,Analysis für Informatiker
+4,Informatik II
+4,Diskrete Strukturen
+4,Lineare Algebra für Informatiker
+4,Theoretische Informatik
+4,Datenbanken
+4,Rechnerstrukturen und C++
+4,Betriebssysteme

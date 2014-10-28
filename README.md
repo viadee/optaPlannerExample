@@ -45,6 +45,16 @@ Nach der Installation des Plugins muss eine Drools Runtime mit dem Namen "Drools
 werden. Dies erfolgt unter:<br/>
 Preferences > Drools > Installed Drools Runtimes > Create a new Drools 6 Runtime
 
+Das JDK wird mindestens in der Version 7 benötigt.
+
+-----
+
+<b>TESTDATEN</b>
+
+Zum Testen der Optimierung kann die Klasse SolverTest verwendet werden. Diese lädt einige Testdaten für Räume, Studiengänge
+und Vorlesungen aus drei csv-Dateien (siehe src/test/resources) in eine H2-Datenbank und führt die Optimierung mit
+dem OptaPlanner-Solver durch.
+
 -----
 
 <b>KONTAKT</b>

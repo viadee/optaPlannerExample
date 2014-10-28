@@ -17,27 +17,6 @@ public class Vorlesung {
     public Vorlesung() {
     }
 
-    @Override
-    public boolean equals(Object obj) {
-
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != getClass()) {
-            return false;
-        }
-
-        Vorlesung other = (Vorlesung) obj;
-        return new EqualsBuilder().append(id, other.id).append(name, other.name).append(studiengang, other.studiengang)
-                .append(termin, other.termin).append(raum, other.raum).isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(id).append(name).append(studiengang).append(termin).append(raum)
-                .toHashCode();
-    }
-
     public Vorlesung(long id, String name, Studiengang studiengang) {
         this.id = id;
         this.name = name;
@@ -91,11 +70,32 @@ public class Vorlesung {
     }
 
     public int getIntervallIndex() {
-        return termin != null ? termin.getIntervall().getIndex() : Integer.MIN_VALUE;
+        return termin != null ? termin.getIntervall().getId() : Integer.MIN_VALUE;
     }
 
     @Override
     public String toString() {
         return studiengang.getName() + " / " + name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != getClass()) {
+            return false;
+        }
+
+        Vorlesung other = (Vorlesung) obj;
+        return new EqualsBuilder().append(id, other.id).append(name, other.name).append(studiengang, other.studiengang)
+                .append(termin, other.termin).append(raum, other.raum).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(id).append(name).append(studiengang).append(termin).append(raum)
+                .toHashCode();
     }
 }

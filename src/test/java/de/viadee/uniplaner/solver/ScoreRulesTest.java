@@ -41,7 +41,7 @@ public class ScoreRulesTest {
     }
 
     @After
-    public void dispose() {
+    public void disposeSession() {
         session.dispose();
     }
 
@@ -49,10 +49,10 @@ public class ScoreRulesTest {
     public void testRuleRaumKonflikt() {
 
         Termin montag8Uhr = new Termin(Wochentag.MONTAG, ZeitIntervall.ACHT_UHR);
-        Raum raum1 = new Raum("Raum 1");
+        Raum raum1 = new Raum(1, "Raum 1");
 
-        Studiengang wi = new Studiengang("WI");
-        Studiengang bwl = new Studiengang("BWL");
+        Studiengang wi = new Studiengang(1, "WI");
+        Studiengang bwl = new Studiengang(2, "BWL");
 
         Vorlesung einfuehrungWI = new Vorlesung(1, "Einführung WI", wi);
         einfuehrungWI.setTermin(montag8Uhr);
@@ -76,7 +76,7 @@ public class ScoreRulesTest {
     public void testRuleTerminKonflikt() {
 
         Termin montag8Uhr = new Termin(Wochentag.MONTAG, ZeitIntervall.ACHT_UHR);
-        Studiengang wi = new Studiengang("WI");
+        Studiengang wi = new Studiengang(1, "WI");
 
         Vorlesung einfuehrungWI = new Vorlesung(1, "Einführung WI", wi);
         einfuehrungWI.setTermin(montag8Uhr);
@@ -97,10 +97,10 @@ public class ScoreRulesTest {
     @Test
     public void testRuleRaumKontinuitaet() {
 
-        Studiengang wi = new Studiengang("WI");
+        Studiengang wi = new Studiengang(1, "WI");
 
-        Raum raum1 = new Raum("Raum 1");
-        Raum raum2 = new Raum("Raum 2");
+        Raum raum1 = new Raum(1, "Raum 1");
+        Raum raum2 = new Raum(2, "Raum 2");
 
         Vorlesung einfuehrungWI = new Vorlesung(1, "Einführung WI", wi);
         einfuehrungWI.setRaum(raum1);
@@ -124,7 +124,7 @@ public class ScoreRulesTest {
     @Test
     public void testRuleWochenKompaktheit() {
 
-        Studiengang wi = new Studiengang("WI");
+        Studiengang wi = new Studiengang(1, "WI");
 
         Termin montag8Uhr = new Termin(Wochentag.MONTAG, ZeitIntervall.ACHT_UHR);
         Termin dienstag8Uhr = new Termin(Wochentag.DIENSTAG, ZeitIntervall.ACHT_UHR);
@@ -149,7 +149,7 @@ public class ScoreRulesTest {
     @Test
     public void testRuleTagKompaktheit() {
 
-        Studiengang wi = new Studiengang("WI");
+        Studiengang wi = new Studiengang(1, "WI");
 
         Termin montag8Uhr = new Termin(Wochentag.MONTAG, ZeitIntervall.ACHT_UHR);
         Termin montag12Uhr = new Termin(Wochentag.MONTAG, ZeitIntervall.ZWOELF_UHR);

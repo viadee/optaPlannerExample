@@ -6,16 +6,16 @@ public enum ZeitIntervall {
             5,
             "16:00-18:00"), ACHTZEHN_UHR(6, "18:00-20:00");
 
-    private int index;
+    private int id;
     private String name;
 
-    private ZeitIntervall(int index, String name) {
-        this.index = index;
+    private ZeitIntervall(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public int getIndex() {
-        return index;
+    public int getId() {
+        return id;
     }
 
     @Override
