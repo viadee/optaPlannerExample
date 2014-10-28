@@ -44,3 +44,10 @@ Das Projekt wurde mit Eclipse in der Version 4.3 (Kepler) umgesetzt. Das folgend
 Nach der Installation des Plugins muss eine Drools Runtime mit dem Namen "Drools 6.1.0.Final" eingerichtet 
 werden. Dies erfolgt unter:<br/>
 Preferences > Drools > Installed Drools Runtimes > Create a new Drools 6 Runtime
+
+-----
+
+<b>KONTAKT</b>
+- Jan-Philipp Friedenstab (jan-philipp.friedenstab@viadee.de)
+- David Jorch (david.jorch@viadee.de)
+- Christian Treptau (christian.treptau@viadee.de)
