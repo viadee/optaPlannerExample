@@ -29,8 +29,8 @@ STUDIENGANG_ID,NAME
 2,Information Security
 2,Network Economics
 2,Management Information Systems and Data Warehousing
-2,Data Analytics I,
-2,Data Analytics II,
+2,Data Analytics I
+2,Data Analytics II
 2,Logic Specification and Logic Programming
 2,Data Integration
 2,Advanced Concepts in Software Engineering
@@ -44,7 +44,7 @@ STUDIENGANG_ID,NAME
 3,Statistik II
 3,Recht
 3,Controlling
-3,Grundlagen des Marketing,
+3,Grundlagen des Marketing
 3,Makroökonomie
 3,Wirtschaftsenglisch
 3,Bilanzen und Steuern
