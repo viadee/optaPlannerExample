@@ -60,4 +60,3 @@ dem OptaPlanner-Solver durch.
 **KONTAKT**
 - Jan-Philipp Friedenstab (jan-philipp.friedenstab@viadee.de)
 - David Jorch (david.jorch@viadee.de)
-- Christian Treptau (christian.treptau@viadee.de)
