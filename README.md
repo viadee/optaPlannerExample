@@ -8,7 +8,7 @@ Weitere Informationen zu OptaPlanner finden sich hier:
 
 http://jaxenter.de/artikel/jboss-optaplanner-optimierung-2-0-176855  
 Kurzversion eines Artikels, der ein Vorgehensmodell zur Lösung von Optimierungsproblemen mit OptaPlanner
-skizziert. Die vollständige Version erscheint in einer der nächsten Print-Ausgaben des Java Magazins.
+skizziert. (Artikel veröffentlicht in Java Magazin 2.15)
 
 http://www.optaplanner.org  
 offizielle OptaPlanner-Webseite
