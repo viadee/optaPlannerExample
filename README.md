@@ -58,5 +58,5 @@ dem OptaPlanner-Solver durch.
 -----
 
 **KONTAKT**
-- Jan-Philipp Friedenstab (jan-philipp.friedenstab@viadee.de)
-- David Jorch (david.jorch@viadee.de)
+- Magdalena Lang (magdalena.lang@viadee.de)
+- Constanze Klaar (constanze.klaar@viadee.de)
