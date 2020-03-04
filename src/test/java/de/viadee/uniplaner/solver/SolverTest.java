@@ -86,7 +86,7 @@ public class SolverTest {
 
             // 2) Solver-Objekt erzeugen
             SolverFactory solverFactory = SolverFactory
-                    .createFromXmlResource("de/viadee/uniplaner/solver/solverConfig.xml");
+                    .createFromXmlResource("solverConfig.xml");
             Solver solver = solverFactory.buildSolver();
 
             // 3) Optimierung starten
