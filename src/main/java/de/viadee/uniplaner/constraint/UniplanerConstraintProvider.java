@@ -69,6 +69,15 @@ public class UniplanerConstraintProvider implements ConstraintProvider {
                 penalize("Raumkontinuität",HardSoftScore.ONE_SOFT,(studiengang, roomCount)-> roomCount-1);
     }
 
+    // Die Vorlesungen eines Studiengangs sollten an möglichst wenigen Wochentagen stattfinden.
+    // Jeder zusätzliche Tag zählt als 1 Constraint-Match.
+
+    private Constraint wochenKompaktheit(ConstraintFactory factory){
+        return factory.from(Vorlesung.class).
+                groupBy(Vorlesung::getStudiengang,countDistinct(Vorlesung::getTag)).
+                penalize("Wochenkompaktheit",HardSoftScore.ONE_SOFT,(studiengang, dayCount)-> dayCount-1);
+    }
+
     // Die Vorlesungen eines Studiengangs am gleichen Tag sollten aufeinander folgen; es sollte möglichst wenig Freistunden zwischen zwei Vorlesungen geben.
     // Jede "isoliert" stattfindende Vorlesung zählt als 1 Constraint-Match.
 /*    private Constraint targesKompaktheit(ConstraintFactory factory){
