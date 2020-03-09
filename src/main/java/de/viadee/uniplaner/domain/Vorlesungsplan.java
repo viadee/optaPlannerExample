@@ -5,14 +5,19 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.optaplanner.core.api.domain.lookup.PlanningId;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
+import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.Solution;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Vorlesungsplan implements Solution<HardSoftScore> {
+public class Vorlesungsplan {
+
+    @PlanningId
+    private Long vorlesungsplanId;
 
     private List<Vorlesung> vorlesungListe;
     private List<Studiengang> studiengangListe;
@@ -65,6 +70,14 @@ public class Vorlesungsplan implements Solution<HardSoftScore> {
         return builder.toHashCode();
     }
 
+    public Long getVorlesungsplanId() {
+        return vorlesungsplanId;
+    }
+
+    public void setVorlesungsplanId(Long vorlesungsplanId) {
+        this.vorlesungsplanId = vorlesungsplanId;
+    }
+
     @ValueRangeProvider(id = "raumListe")
     public List<Raum> getRaumListe() {
         return raumListe;
@@ -80,6 +93,7 @@ public class Vorlesungsplan implements Solution<HardSoftScore> {
         return vorlesungListe;
     }
 
+    @PlanningScore
     public HardSoftScore getScore() {
         return score;
     }

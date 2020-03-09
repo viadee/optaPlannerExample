@@ -1,5 +1,7 @@
 package de.viadee.uniplaner.domain;
 
+import org.optaplanner.core.api.domain.lookup.PlanningId;
+
 public class Studiengang {
 
     private long id;
