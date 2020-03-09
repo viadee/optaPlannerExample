@@ -15,6 +15,7 @@
         <scoreDrl>de/viadee/uniplaner/solver/scoreRules.drl</scoreDrl>
     </scoreDirectorFactory>-->
     <scoreDirectorFactory>
+        <scoreDefinitionType>HARD_SOFT</scoreDefinitionType>
         <constraintProviderClass>de.viadee.uniplaner.constraint.UniplanerConstraintProvider</constraintProviderClass>
     </scoreDirectorFactory>
 

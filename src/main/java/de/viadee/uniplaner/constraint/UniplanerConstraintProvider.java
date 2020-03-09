@@ -1,17 +1,12 @@
 package de.viadee.uniplaner.constraint;
 
-import com.google.common.base.Joiner;
-import de.viadee.uniplaner.domain.Raum;
 import de.viadee.uniplaner.domain.Studiengang;
 import de.viadee.uniplaner.domain.Vorlesung;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import org.optaplanner.core.api.score.buildin.simple.SimpleScore;
 import org.optaplanner.core.api.score.stream.Constraint;
 import org.optaplanner.core.api.score.stream.ConstraintFactory;
 import org.optaplanner.core.api.score.stream.ConstraintProvider;
-import org.optaplanner.core.api.score.stream.Joiners;
 
-import java.util.function.Function;
 
 import static org.optaplanner.core.api.score.stream.ConstraintCollectors.*;
 import static org.optaplanner.core.api.score.stream.Joiners.equal;
@@ -23,7 +18,8 @@ public class UniplanerConstraintProvider implements ConstraintProvider {
         return new Constraint[]{
                 raumKonflikt(constraintFactory),
                 terminKonflikt(constraintFactory),
-                raumKontinuitaet(constraintFactory)
+                raumKontinuitaet(constraintFactory),
+                wochenKompaktheit(constraintFactory)
         };
     }
 
@@ -65,24 +61,25 @@ public class UniplanerConstraintProvider implements ConstraintProvider {
 
     private Constraint raumKontinuitaet(ConstraintFactory factory) {
         return factory.from(Vorlesung.class).
-               groupBy(Vorlesung::getStudiengang, countDistinct(Vorlesung::getRaum)).
-                penalize("Raumkontinuität",HardSoftScore.ONE_SOFT,(studiengang, roomCount)-> roomCount-1);
+                groupBy(Vorlesung::getStudiengang, countDistinct(Vorlesung::getRaum)).
+                penalize("Raumkontinuität", HardSoftScore.ONE_SOFT, (studiengang, roomCount) -> roomCount - 1);
     }
 
     // Die Vorlesungen eines Studiengangs sollten an möglichst wenigen Wochentagen stattfinden.
     // Jeder zusätzliche Tag zählt als 1 Constraint-Match.
 
-    private Constraint wochenKompaktheit(ConstraintFactory factory){
+    private Constraint wochenKompaktheit(ConstraintFactory factory) {
         return factory.from(Vorlesung.class).
-                groupBy(Vorlesung::getStudiengang,countDistinct(Vorlesung::getTag)).
-                penalize("Wochenkompaktheit",HardSoftScore.ONE_SOFT,(studiengang, dayCount)-> dayCount-1);
+                groupBy(Vorlesung::getStudiengang, countDistinct(Vorlesung::getTag)).
+                penalize("Wochenkompaktheit", HardSoftScore.ONE_SOFT, (studiengang, dayCount) -> dayCount - 1);
     }
 
     // Die Vorlesungen eines Studiengangs am gleichen Tag sollten aufeinander folgen; es sollte möglichst wenig Freistunden zwischen zwei Vorlesungen geben.
     // Jede "isoliert" stattfindende Vorlesung zählt als 1 Constraint-Match.
-/*    private Constraint targesKompaktheit(ConstraintFactory factory){
+  /*  private Constraint targesKompaktheit(ConstraintFactory factory){
         return factory.from(Vorlesung.class).
-                join(Studiengang.class,).
+                groupBy(Vorlesung::getStudiengang,Vorlesung::getTermin).
+                filter((studiengang, termin) -> termin.)
 
     }*/
 }
