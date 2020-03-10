@@ -1,0 +1,57 @@
+package de.viadee.tourplanner.solver
+dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder
+import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScoreHolder
+import de.viadee.tourplanner.domain.RouteElement
+import de.viadee.tourplanner.domain.Request
+import de.viadee.tourplanner.domain.TimeWindow
+import de.viadee.tourplanner.domain.RoutingSchedule
+
+global HardSoftScoreHolder scoreHolder
+global HardSoftDoubleScoreHolder doubleScoreHolder
+
+
+//TODO: Add repair mechanisms?
+
+// Hard constraints
+
+//Two route elements in the same route cannot have the same position
+// Match of 1 for any duplicate
+rule "PositionsKonflikt"
+    when
+        $re1: RouteElement(request!=null, $request:request, $position: position, $route: route)
+        $reqs: Request(id>$request.getId()) //Requests with higher id
+        $re2: RouteElement($reqs contains request, position==$position, route==$route) //route elements with same position+route and higher request id
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
+
+//A time window assigned to a route element must be from the list of the respective request
+rule "ZeitfensterKonflikt"
+    when
+        $re: RouteElement($request: request, $tw: timeWindow)
+        not TimeWindow(id==$tw.id) from $request.timeWindows
+     then
+        scoreHolder.addHardConstraintMatch(kcontext, -1);
+
+end
+
+//All requests' service times have to be able to start within the assigned time window (+ 10 minutes later okay, see soft constraints)
+//TODO
+
+//Soft constraints
+
+//Every included request provides additional value (basket value)
+rule "ValueCollection"
+	when
+	    $re: RouteElement()
+	then
+	   doubleScoreHolder.addSoftConstraintMatch(kcontext, $re.getRequest().getValue());
+end
+
+//Cost per travel time (every route starts and ends at depot) //Euclidean distance
+// TODO
+
+//Every minute too late is penalized (within the acceptable window of 10 minutes)
+// TODO

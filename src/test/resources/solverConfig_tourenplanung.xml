@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+    <environmentMode>PRODUCTION</environmentMode>
+
+    <!-- Konfiguration Domänenmodell -->
+
+    <solutionClass>de.viadee.tourplanner.domain.RoutingSchedule</solutionClass>
+    <entityClass>de.viadee.tourplanner.domain.RouteElement</entityClass>
+
+
+    <!-- Konfiguration Score -->
+
+    <scoreDirectorFactory>
+        <scoreDefinitionType>HARD_SOFT</scoreDefinitionType>
+        <scoreDrl>de/viadee/tourplanner/solver/scoreRules.drl</scoreDrl>
+    </scoreDirectorFactory>
+
+
+    <!-- Konfiguration Optimierungsalgorithmen -->
+
+    <termination>
+        <minutesSpentLimit>5</minutesSpentLimit>
+        <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+    </termination>
+
+    <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+    </constructionHeuristic>
+
+    <localSearch>
+
+        <!-- Da mehrere Planungsvariablen existieren, müssen diese explizit angegeben werden -->
+        <unionMoveSelector>
+            <changeMoveSelector>
+                <valueSelector>
+                    <variableName>termin</variableName>
+                </valueSelector>
+            </changeMoveSelector>
+            <changeMoveSelector>
+                <valueSelector>
+                    <variableName>raum</variableName>
+                </valueSelector>
+            </changeMoveSelector>
+        </unionMoveSelector>
+
+        <acceptor>
+            <solutionTabuSize>10000</solutionTabuSize>
+        </acceptor>
+
+        <forager>
+            <acceptedCountLimit>2000</acceptedCountLimit>
+        </forager>
+
+    </localSearch>
+
+</solver>

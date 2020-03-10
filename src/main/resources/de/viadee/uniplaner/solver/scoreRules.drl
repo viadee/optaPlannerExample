@@ -19,7 +19,7 @@ global HardSoftScoreHolder scoreHolder
 // Jeder Raumkonflikt zählt als 1 Constraint-Match.
 rule "RaumKonflikt"
 	when
-		$v1	: Vorlesung(termin != null, raum != null)
+		$v1	: Vorlesung(termin : termin, raum != null)
 		$v2 : Vorlesung(id > $v1.id, termin == $v1.termin, raum == $v1.raum)
 	then
 		scoreHolder.addHardConstraintMatch(kcontext, -1);
