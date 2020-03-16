@@ -13,7 +13,7 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.lang.builder.CompareToBuilder;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.h2.tools.RunScript;
 import org.junit.BeforeClass;
 import org.junit.Test;
