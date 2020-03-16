@@ -19,7 +19,7 @@
     <!-- Konfiguration Optimierungsalgorithmen -->
 
     <termination>
-        <minutesSpentLimit>5</minutesSpentLimit>
+        <minutesSpentLimit>2</minutesSpentLimit>
     </termination>
 
     <constructionHeuristic>
