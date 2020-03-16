@@ -1,5 +1,7 @@
 ### optaPlannerExample
 -----
+[![Build Status](https://travis-ci.org/viadee/optaPlannerExample.svg?branch=master)](https://travis-ci.org/github/viadee/optaPlannerExample) 
+[![Quality Gate](https://sonarcloud.io/component_measures?id=de.viadee%3Auniplaner&metric=Coverage&view=list#)](https://sonarcloud.io/component_measures?id=de.viadee%3Auniplaner&view=list)
 Beispielprojekt für JBoss OptaPlanner: Raum- und Terminplanung an einer Universität.
 
 -----
