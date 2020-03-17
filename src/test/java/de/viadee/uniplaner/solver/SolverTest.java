@@ -116,7 +116,7 @@ public class SolverTest {
             for (Vorlesung v : solutionVorlesungListe) {
                 sb.append(v.getRaum() + ", " + v.getTag() + ", " + v.getTermin().getIntervall() + " -> " + v + "\n");
             }
-            logger.info(sb.toString());
+            logger.warn(sb.toString());
         }
     }
 
