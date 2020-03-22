@@ -1,0 +1,22 @@
+package de.viadee.tourplanner.solver
+dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder
+import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScoreHolder
+import de.viadee.tourplanner.domain.RouteElement
+import de.viadee.tourplanner.domain.Request
+import de.viadee.tourplanner.domain.TimeWindow
+import de.viadee.tourplanner.domain.RoutingSchedule
+
+global HardSoftScoreHolder scoreHolder
+global HardSoftDoubleScoreHolder doubleScoreHolder
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+// ############################################################################
+// Soft constraints
+// ############################################################################
+// ############################################################################
+// Hard constraints
+// ############################################################################

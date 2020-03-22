@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+    <!--environmentMode>FULL_ASSERT</environmentMode-->
+    <moveThreadCount>AUTO</moveThreadCount>
+    <solutionClass>RoutingSchedule</solutionClass>
+    <entityClass>RouteElement</entityClass>
+
+
+    <constructionHeuristic>
+        <queuedEntityPlacer>
+            <entitySelector id="placerEntitySelector">
+                <cacheType>PHASE</cacheType>
+                <entityClass>de.telekom.az.solver.planning.OptaWochenplan</entityClass>
+            </entitySelector>
+            <changeMoveSelector>
+                <entitySelector mimicSelectorRef="placerEntitySelector"/>
+            </changeMoveSelector>
+        </queuedEntityPlacer>
+    </constructionHeuristic>
+    <constructionHeuristic>
+        <queuedEntityPlacer>
+            <entitySelector id="placerEntitySelector">
+                <cacheType>PHASE</cacheType>
+                <entityClass>de.telekom.az.solver.planning.OptaSchicht</entityClass>
+            </entitySelector>
+            <changeMoveSelector>
+                <entitySelector mimicSelectorRef="placerEntitySelector"/>
+            </changeMoveSelector>
+        </queuedEntityPlacer>
+    </constructionHeuristic>
+
+
+    <localSearch>
+        <!-- Implizit definiert: The localSearchType (SIMULATED_ANNEALING) must not be configured if the acceptorConfig (AcceptorConfig()) is explicitly configured.-->
+        <!--localSearchType>SIMULATED_ANNEALING</localSearchType-->
+        <acceptor>
+            <simulatedAnnealingStartingTemperature>10hard/0soft</simulatedAnnealingStartingTemperature>
+            <entityTabuSize>50</entityTabuSize>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>4</acceptedCountLimit>
+        </forager>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+
+    <localSearch>
+        <localSearchType>LATE_ACCEPTANCE</localSearchType>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+    <localSearch>
+        <!--  The localSearchType (TABU_SEARCH) must not be configured if the acceptorConfig (AcceptorConfig()) is explicitly configured.-->
+        <!--localSearchType>TABU_SEARCH</localSearchType-->
+        <acceptor>
+            <entityTabuRatio>0.1</entityTabuRatio>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+    <localSearch>
+        <!--  The localSearchType (TABU_SEARCH) must not be configured if the acceptorConfig (AcceptorConfig()) is explicitly configured.-->
+        <!--localSearchType>TABU_SEARCH</localSearchType-->
+        <acceptor>
+            <entityTabuRatio>0.2</entityTabuRatio>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+
+    <localSearch>
+        <acceptor>
+            <simulatedAnnealingStartingTemperature>10hard/0soft</simulatedAnnealingStartingTemperature>
+            <entityTabuSize>50</entityTabuSize>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>4</acceptedCountLimit>
+        </forager>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+    <localSearch>
+        <localSearchType>HILL_CLIMBING</localSearchType>
+        <termination>
+            <unimprovedSecondsSpentLimit>45</unimprovedSecondsSpentLimit>
+            <secondsSpentLimit>8700</secondsSpentLimit>
+        </termination>
+    </localSearch>
+
+    <scoreDirectorFactory>
+        <scoreDrl>de/telekom/az/solver/planning/wochenplan.drl</scoreDrl>
+    </scoreDirectorFactory>
+
+    <termination>
+        <secondsSpentLimit>43200</secondsSpentLimit>
+        <termination>
+            <bestScoreLimit>0hard/0soft</bestScoreLimit>
+        </termination>
+    </termination>
+</solver>
