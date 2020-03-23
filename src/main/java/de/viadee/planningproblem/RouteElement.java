@@ -2,6 +2,7 @@ package de.viadee.planningproblem;
 
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
+import org.optaplanner.core.api.domain.variable.PlanningVariableGraphType;
 
 @PlanningEntity
 public class RouteElement {
@@ -16,12 +17,23 @@ public class RouteElement {
 
     private Request request;
 
+    private RouteElement previosRouteElement;
+
     public RouteElement() {
 
     }
 
     public RouteElement(int route, int position, TimeWindow timeWindow, Request request) {
 
+    }
+
+    @PlanningVariable(graphType = PlanningVariableGraphType.CHAINED, valueRangeProviderRefs = { "routeList" })
+    public RouteElement getPreviousRouteElement() {
+        return previosRouteElement;
+    }
+
+    public void setPreviosRouteElement(RouteElement previousRouteElement) {
+        this.previosRouteElement = previousRouteElement;
     }
 
     // Welcher Lieferwagen soll den REquest bedienen
