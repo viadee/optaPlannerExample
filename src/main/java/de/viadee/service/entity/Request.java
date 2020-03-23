@@ -5,8 +5,9 @@ import de.viadee.planningproblem.TimeWindow;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.awt.geom.Point2D;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "REQUEST")
@@ -23,6 +24,12 @@ public class Request {
             joinColumns = @JoinColumn(name = "request_id",referencedColumnName = "id")
             ,inverseJoinColumns=@JoinColumn(name="tw_id", referencedColumnName="ID"))
     private List<TimeWindowEntity> timeWindows;
+
+    private BigDecimal basketValue;
+
+    @NotNull
+    @Embedded
+    private Position position;
 
     public void setId(Integer id) {
         this.id = id;
