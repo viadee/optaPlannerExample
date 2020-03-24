@@ -1,4 +1,4 @@
-package de.viadee.planningproblem;
+package de.viadee.domain;
 
 import java.time.LocalTime;
 

@@ -1,4 +1,4 @@
-package de.viadee.planningproblem;
+package de.viadee.domain;
 
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
@@ -27,7 +27,7 @@ public class RouteElement {
 
     }
 
-    @PlanningVariable(graphType = PlanningVariableGraphType.CHAINED, valueRangeProviderRefs = { "routeList" })
+    @PlanningVariable(graphType = PlanningVariableGraphType.CHAINED, valueRangeProviderRefs = { "routeList"})
     public RouteElement getPreviousRouteElement() {
         return previosRouteElement;
     }

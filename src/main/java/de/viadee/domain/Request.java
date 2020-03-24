@@ -1,6 +1,4 @@
-package de.viadee.planningproblem;
-
-import org.optaplanner.core.api.domain.entity.PlanningEntity;
+package de.viadee.domain;
 
 import java.awt.geom.Point2D;
 import java.util.List;
@@ -10,16 +8,23 @@ public class Request {
 
     private int id;
 
-    private int setId;
-
     private double basketValue;
 
     private Point2D position;
 
     private double serviceTime;
 
+
+    public Request(int id, double basketValue, Point2D position){
+        this.id = id;
+        this.basketValue = basketValue;
+        this.position = position;
+    }
+
     // In diesen Zeitfenstern kann der Kunde beliefert werden
     private List<TimeWindow> availableTimeWindows;
+
+
 
     public int getId() {
         return id;
@@ -59,13 +64,5 @@ public class Request {
 
     public void setAvailableTimeWindows(List<TimeWindow> availableTimeWindows) {
         this.availableTimeWindows = availableTimeWindows;
-    }
-
-    public int getSetId() {
-        return setId;
-    }
-
-    public void setSetId(int setId) {
-        this.setId = setId;
     }
 }

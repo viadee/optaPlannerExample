@@ -1,9 +1,6 @@
-package de.viadee.planningproblem;
-
-import org.optaplanner.core.api.domain.entity.PlanningEntity;
+package de.viadee.domain;
 
 import java.awt.geom.Point2D;
-import java.util.List;
 
 public class Route {
     private int capacity;
