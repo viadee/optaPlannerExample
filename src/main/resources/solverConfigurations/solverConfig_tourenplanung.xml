@@ -4,14 +4,14 @@
 
     <!-- Konfiguration Domänenmodell -->
 
-    <solutionClass>de.viadee.tourplanner.domain.RoutingSchedule</solutionClass>
-    <entityClass>de.viadee.tourplanner.domain.RouteElement</entityClass>
+    <solutionClass>de.viadee.domain.RoutingSchedule</solutionClass>
+    <entityClass>de.viadee.domain.Route</entityClass>
+    <entityClass>de.viadee.domain.Request</entityClass>
 
 
     <!-- Konfiguration Score -->
 
     <scoreDirectorFactory>
-        <scoreDefinitionType>HARD_SOFT</scoreDefinitionType>
         <scoreDrl>de/viadee/tourplanner/solver/scoreRules.drl</scoreDrl>
     </scoreDirectorFactory>
 

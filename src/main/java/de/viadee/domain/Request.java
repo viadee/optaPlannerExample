@@ -1,9 +1,13 @@
 package de.viadee.domain;
 
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+import org.optaplanner.core.api.domain.variable.PlanningVariableGraphType;
+
 import java.awt.geom.Point2D;
 import java.util.List;
 
-// Bestellung eines Kunden
+@PlanningEntity
 public class Request {
 
     private int id;
@@ -14,6 +18,7 @@ public class Request {
 
     private double serviceTime;
 
+    private Route previousRoute;
 
     public Request(int id, double basketValue, Point2D position){
         this.id = id;
@@ -65,4 +70,11 @@ public class Request {
     public void setAvailableTimeWindows(List<TimeWindow> availableTimeWindows) {
         this.availableTimeWindows = availableTimeWindows;
     }
+
+    @PlanningVariable(valueRangeProviderRefs = {"routeRange", "requestRange"},
+            graphType = PlanningVariableGraphType.CHAINED)
+    public Route getPreviousRoute() {
+        return previousRoute;
+    }
+
 }

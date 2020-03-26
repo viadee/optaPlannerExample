@@ -4,6 +4,7 @@ import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 import java.util.List;
@@ -11,22 +12,11 @@ import java.util.List;
 @PlanningSolution
 public class RoutingSchedule {
 
-    private List<RouteElement> routeElements;
-
     private List<Request> requests;
 
     private List<Route> routes;
 
     private HardSoftScore score;
-
-    @PlanningEntityCollectionProperty
-    public List<RouteElement> getRouteElements() {
-        return routeElements;
-    }
-
-    public void setRouteElements(List<RouteElement> routeElements) {
-        this.routeElements = routeElements;
-    }
 
     @PlanningScore
     public HardSoftScore getScore() {
@@ -37,7 +27,8 @@ public class RoutingSchedule {
         this.score = score;
     }
 
-    @ProblemFactCollectionProperty
+    @PlanningEntityCollectionProperty
+    @ValueRangeProvider(id = "routeList")
     public List<Route> getRoutes() {
         return routes;
     }
@@ -46,7 +37,8 @@ public class RoutingSchedule {
         this.routes = routes;
     }
 
-    @ProblemFactCollectionProperty
+    @PlanningEntityCollectionProperty
+    @ValueRangeProvider(id = "requestRange")
     public List<Request> getRequests() {
         return requests;
     }

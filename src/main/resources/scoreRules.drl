@@ -5,7 +5,6 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder
 import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScoreHolder
 import de.viadee.tourplanner.domain.RouteElement
 import de.viadee.tourplanner.domain.Request
-import de.viadee.tourplanner.domain.TimeWindow
 import de.viadee.tourplanner.domain.RoutingSchedule
 
 global HardSoftScoreHolder scoreHolder
@@ -14,9 +13,25 @@ global HardSoftDoubleScoreHolder doubleScoreHolder
 // ############################################################################
 // Hard constraints
 // ############################################################################
+// TODO: Kapazität eines Routeelements darf nicht überschritten werden
+rule "routeCapacity"
+    when
+        route : Route($capacity : capacity)
+        accumulate(
+            RouteElement(
+                route == $route,
+                $serviceTime : serviceTime);
+            $serviceTimeTotal : sum($serviceTime);
+            $serviceTimeTotal > $capacity
+        )
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, $capacity - $serviceTimeTotal);
+end
 // ############################################################################
 // Soft constraints
 // ############################################################################
+// Todo: Maximiere Basketvalue
 // ############################################################################
 // Hard constraints
 // ############################################################################
+// Todo:
