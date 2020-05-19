@@ -10,6 +10,7 @@ import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.Solution;
+import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
@@ -79,11 +80,13 @@ public class Vorlesungsplan {
     }
 
     @ValueRangeProvider(id = "raumListe")
+    @ProblemFactCollectionProperty
     public List<Raum> getRaumListe() {
         return raumListe;
     }
 
     @ValueRangeProvider(id = "terminListe")
+    @ProblemFactCollectionProperty
     public List<Termin> getTerminListe() {
         return terminListe;
     }
@@ -102,6 +105,7 @@ public class Vorlesungsplan {
         this.score = score;
     }
 
+    @ProblemFactCollectionProperty
     public List<Studiengang> getStudiengangListe() {
         return studiengangListe;
     }
@@ -122,6 +126,7 @@ public class Vorlesungsplan {
         this.vorlesungListe = vorlesungListe;
     }
 
+    @ProblemFactCollectionProperty
     public List<Wochentag> getTagListe() {
         return tagListe;
     }
