@@ -58,7 +58,7 @@ Zum Testen der Optimierung kann die Klasse `SolverTest` verwendet werden. Diese 
 und Vorlesungen aus drei csv-Dateien (siehe `src/test/resources`) in eine H2-Datenbank und führt die Optimierung mit
 dem OptaPlanner-Solver durch.
 
-*NEU*: Das Beispiel wurde um eine Constraint Streams Variante erweitert. Zum Testen kann die Klasse 'SolverTestConstraintStreams' verwendet werden.
+*NEU*: Das Beispiel wurde um eine Constraint Streams Variante erweitert. Zum Testen kann die Klasse `SolverTestConstraintStreams` verwendet werden.
 
 -----
 
